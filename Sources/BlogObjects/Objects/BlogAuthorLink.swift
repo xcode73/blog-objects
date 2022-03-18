@@ -6,11 +6,11 @@
 //
 
 import Foundation
-import FeatherApi
+import FeatherObjects
 
 public extension Blog {
     
-    enum AuthorLink: FeatherApiModel {
+    enum AuthorLink: FeatherObjectModel {
         public typealias Module = Blog
         
         public static var pathKey: String { "links" }

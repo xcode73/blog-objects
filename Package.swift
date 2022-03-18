@@ -2,19 +2,19 @@
 import PackageDescription
 
 let package = Package(
-    name: "blog-api",
+    name: "blog-objects",
     platforms: [
-       .macOS(.v12)
+       .macOS(.v10_15)
     ],
     products: [
-        .library(name: "BlogApi", targets: ["BlogApi"]),
+        .library(name: "BlogObjects", targets: ["BlogObjects"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/feathercms/feather-api", .branch("main")),
+        .package(url: "https://github.com/feathercms/feather-objects", .branch("main")),
     ],
     targets: [
-        .target(name: "BlogApi", dependencies: [
-            .product(name: "FeatherApi", package: "feather-api"),
+        .target(name: "BlogObjects", dependencies: [
+            .product(name: "FeatherObjects", package: "feather-objects"),
         ]),
     ]
 )

@@ -6,20 +6,16 @@
 //
 
 import Foundation
-import FeatherApi
+import FeatherObjects
 
 public extension Blog {
     
-    enum Category: FeatherApiModel {
+    enum Post: FeatherObjectModel {
         public typealias Module = Blog
-        
-        public static let defaultPriority = 100
-        
-        public static var pathKey: String { "categories" }
     }
 }
 
-public extension Blog.Category {
+public extension Blog.Post {
     
     // MARK: -
     
@@ -27,25 +23,25 @@ public extension Blog.Category {
         public var id: UUID
         public var title: String
         public var imageKey: String?
-        public var color: String?
-        public var priority: Int
         public var excerpt: String?
         public var metadata: FeatherMetadata
-        
+        public var categories: [Blog.Category.List]
+        public var authors: [Blog.Author.List]
+
         public init(id: UUID,
                     title: String,
                     imageKey: String?,
-                    color: String?,
-                    priority: Int,
-                    excerpt: String? = nil,
-                    metadata: FeatherMetadata) {
+                    excerpt: String?,
+                    metadata: FeatherMetadata,
+                    categories: [Blog.Category.List],
+                    authors: [Blog.Author.List]) {
             self.id = id
             self.title = title
             self.imageKey = imageKey
-            self.color = color
-            self.priority = priority
             self.excerpt = excerpt
             self.metadata = metadata
+            self.categories = categories
+            self.authors = authors
         }
     }
     
@@ -56,27 +52,27 @@ public extension Blog.Category {
         public var title: String
         public var imageKey: String?
         public var excerpt: String?
-        public var color: String?
-        public var priority: Int
+        public var content: String?
         public var metadata: FeatherMetadata
-        public var posts: [Blog.Post.List]
+        public var categories: [Blog.Category.List]
+        public var authors: [Blog.Author.List]
         
         public init(id: UUID,
                     title: String,
                     imageKey: String?,
                     excerpt: String?,
-                    color: String?,
-                    priority: Int,
+                    content: String?,
                     metadata: FeatherMetadata,
-                    posts: [Blog.Post.List]) {
+                    categories: [Blog.Category.List],
+                    authors: [Blog.Author.List]) {
             self.id = id
             self.title = title
             self.imageKey = imageKey
             self.excerpt = excerpt
-            self.color = color
-            self.priority = priority
+            self.content = content
             self.metadata = metadata
-            self.posts = posts
+            self.categories = categories
+            self.authors = authors
         }
     }
     
@@ -86,19 +82,16 @@ public extension Blog.Category {
         public var title: String
         public var imageKey: String?
         public var excerpt: String?
-        public var color: String?
-        public var priority: Int
+        public var content: String?
         
         public init(title: String,
                     imageKey: String? = nil,
                     excerpt: String? = nil,
-                    color: String? = nil,
-                    priority: Int = Blog.Category.defaultPriority) {
+                    content: String? = nil) {
             self.title = title
             self.imageKey = imageKey
             self.excerpt = excerpt
-            self.color = color
-            self.priority = priority
+            self.content = content
         }
     }
     
@@ -108,19 +101,16 @@ public extension Blog.Category {
         public var title: String
         public var imageKey: String?
         public var excerpt: String?
-        public var color: String?
-        public var priority: Int
-
+        public var content: String?
+        
         public init(title: String,
                     imageKey: String? = nil,
                     excerpt: String? = nil,
-                    color: String? = nil,
-                    priority: Int = Blog.Category.defaultPriority) {
+                    content: String? = nil) {
             self.title = title
             self.imageKey = imageKey
             self.excerpt = excerpt
-            self.color = color
-            self.priority = priority
+            self.content = content
         }
     }
     
@@ -130,19 +120,16 @@ public extension Blog.Category {
         public var title: String?
         public var imageKey: String?
         public var excerpt: String?
-        public var color: String?
-        public var priority: Int?
+        public var content: String?
         
         public init(title: String? = nil,
                     imageKey: String? = nil,
                     excerpt: String? = nil,
-                    color: String? = nil,
-                    priority: Int? = nil) {
+                    content: String? = nil) {
             self.title = title
             self.imageKey = imageKey
             self.excerpt = excerpt
-            self.color = color
-            self.priority = priority
+            self.content = content
         }
     }
 }

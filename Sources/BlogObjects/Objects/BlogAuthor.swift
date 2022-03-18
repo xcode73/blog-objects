@@ -6,11 +6,11 @@
 //
 
 import Foundation
-import FeatherApi
+import FeatherObjects
 
 public extension Blog {
     
-    enum Author: FeatherApiModel {
+    enum Author: FeatherObjectModel {
         public typealias Module = Blog
     }
 }
