@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "blog-objects",
     platforms: [
-       .macOS(.v10_15)
+       .macOS(.v12)
     ],
     products: [
         .library(name: "BlogObjects", targets: ["BlogObjects"]),
